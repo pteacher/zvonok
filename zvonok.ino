@@ -31,20 +31,17 @@ void setup() {
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); 
   display.setTextColor(WHITE); 
 
-void dateSetup()
+void dateSetup(int D, int M, int Y, int s, int m, int h)
 {
-  // ===================================
-  // Do not clear that
-  // rtc.setDOW(THURSDAY);
-  //-------------------------------------------------------------------------- rtc.setTime(18,41,0);
-  // rtc.setDate(30,01,2015);
-  // rtc.setTime(16,45,0);
+  //rtc.setDOW(THURSDAY);
+  rtc.setDate(D,M,Y);
+  rtc.setTime(h,m,s);
   //rtc.setTime(17,45,0,27,01,2015); 
 }
 
 }
 const int nz=6;
-int zv[nz][2]={{17,48},{16,48},{16,50},{17,07},{18,59},{19,10}};
+int zv[nz][2]={{08,30},{9,15},{9,25},{10,10},{10,25},{11,10}};
 
 void loop() {
   display.clearDisplay();
@@ -83,6 +80,4 @@ void loop() {
   }
   display.display();
   delay(1000);
-
 }
-// TEST
