@@ -8,7 +8,7 @@
 LiquidCrystal lcd(13, 12, 11, 10,  9,  8);
 
 #define OLED_RESET 4
-#define rele 2
+#define relay 2
 Adafruit_SSD1306 display(OLED_RESET);
 
 int beeep = 0;
@@ -24,10 +24,11 @@ DS1302 rtc(kCePin, kIoPin, kSclkPin);
 void setup() {
   rtc.halt(false);
   rtc.writeProtect(false);
-  
+
   lcd.begin(16, 2);
   pinMode(4, INPUT);
-  pinMode(rele, OUTPUT);
+  pinMode(relay, OUTPUT);
+
   display.begin(SSD1306_SWITCHCAPVCC, 0x3C); 
   display.setTextColor(WHITE); 
 
@@ -65,10 +66,9 @@ void loop() {
   if (t.min==zv[i][1] && t.hour==zv[i][0])
   {
     if (t.sec<20)
-      digitalWrite(rele, HIGH);
+      digitalWrite(relay, HIGH);
     else 
-      digitalWrite(rele, LOW);
-  
+      digitalWrite(relay, LOW);
   }
     
   }
